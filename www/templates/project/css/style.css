@@ -1,0 +1,30 @@
+input,select{
+    margin-bottom:15px;
+    border-radius:4px;
+    padding:5px;
+    border:1px solid #ccc;
+}
+.display_block{
+    display: block;
+}
+header, footer{
+    background-color:#ccc;
+    color:black;
+    text-align: center;
+    padding-top:50px;
+    padding-bottom: 50px;
+    font-size:20px;
+    margin-bottom: 15px;
+}
+form{
+    margin-top:15px;
+}
+.error{
+    margin:10px auto;
+    background: red;
+    text-align:center;
+    font-size:18px;
+    width:80%;
+    padding:15px 0;
+    border-radius:10px;
+}
