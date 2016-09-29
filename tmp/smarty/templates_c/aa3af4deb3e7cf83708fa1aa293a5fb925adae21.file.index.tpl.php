@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2016-09-21 21:24:53
+<?php /* Smarty version Smarty-3.1.6, created on 2016-09-29 17:23:03
          compiled from "../views/project\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:940157a89f9fe33845-02314132%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'aa3af4deb3e7cf83708fa1aa293a5fb925adae21' => 
     array (
       0 => '../views/project\\index.tpl',
-      1 => 1474485890,
+      1 => 1475162577,
       2 => 'file',
     ),
   ),
@@ -25,8 +25,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'rs' => 0,
     'outgo' => 0,
     'value' => 0,
-    'a' => 0,
+    'transaction_outgo' => 0,
+    'transaction' => 0,
     'income' => 0,
+    'transaction_income' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -71,7 +73,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="tab-1"> 
                     <form action="/" class="text-center" method="post">
-                        <input type="text" name="prise" placeholder="Цена">
+                        <input type="text" name="prise" placeholder="Сумма">
                         <select name="group">
                             <option value='0' selected="selected">Выберите группу</option>
                             <?php  $_smarty_tpl->tpl_vars['value'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['value']->_loop = false;
@@ -90,33 +92,45 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
                         <button name="button" class="btn btn-info">Добавить</button>
                         <input type="hidden" name="id_group" value="1" />
                     </form>
-                    <div class="col-sm-1">
-                        <p>№</p>
-                        <?php  $_smarty_tpl->tpl_vars['value'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['value']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['a']->value+1; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['value']->key => $_smarty_tpl->tpl_vars['value']->value){
-$_smarty_tpl->tpl_vars['value']->_loop = true;
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Cума</td>
+                                    <td>Группа</td>
+                                    <td>Описание</td>
+                                    <td>Дата</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php  $_smarty_tpl->tpl_vars['transaction'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['transaction']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['transaction_outgo']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['transaction']->key => $_smarty_tpl->tpl_vars['transaction']->value){
+$_smarty_tpl->tpl_vars['transaction']->_loop = true;
 ?>
-                            <p><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
-</p>
-                        <?php } ?>
+                                    <tr>
+                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['id'];?>
+</td>
+                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['cost'];?>
+</td>
+                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['name'];?>
+</td>
+                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['tag'];?>
+</td>
+                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['data'];?>
+</td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                        
                     </div>
-                    <div class="col-sm-2">
-                        <p>Сумма</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Группа</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Дата</p>
-                    </div>
-                    <div class="col-sm-3">
-                        <p>Подгруппа</p>
-                    </div>
+                    
                 </div>
                 <div class="tab-pane fade" id="tab-2">
                     <form action="/" class="text-center" method="post">
-                        <input type="text" name="prise" placeholder="Цена">
+                        <input type="text" name="prise" placeholder="Сумма">
                         <select name="group">
                             <option value='0' selected="selected">Выберите группу</option>
                             <?php  $_smarty_tpl->tpl_vars['value'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['value']->_loop = false;
@@ -136,6 +150,41 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
                         <button name="button" class="btn btn-info">Добавить</button>
                         <input type="hidden" name="id_group" value="2">
                     </form>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Cума</td>
+                                    <td>Группа</td>
+                                    <td>Описание</td>
+                                    <td>Дата</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php  $_smarty_tpl->tpl_vars['transaction'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['transaction']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['transaction_income']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['transaction']->key => $_smarty_tpl->tpl_vars['transaction']->value){
+$_smarty_tpl->tpl_vars['transaction']->_loop = true;
+?>
+                                    <tr>
+                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['id'];?>
+</td>
+                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['cost'];?>
+</td>
+                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['name'];?>
+</td>
+                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['tag'];?>
+</td>
+                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['data'];?>
+</td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                        
+                    </div>
                 </div>
                 <!-- содержание всплывающего окна --> 
                 <div class="modal fade" id="modal-1">

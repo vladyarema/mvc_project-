@@ -58,6 +58,7 @@ function check_data_transaction($prise, $group, $keywords) {
     if($group == 0){
         $message['status'] = 1;
         $message['message'] = 'Выберете группу';
+        return $message;
     }
     if($keywords == ""){
         $message['status'] = 1;
@@ -80,15 +81,22 @@ function new_transaction($prise, $group, $keywords, $id_group){
         $message['status'] = 1;
         $message['message'] = 'Не добавлено!';
         return $message;
+
     }
 }
-function data_transaction($id){
-    $sql = "SELECT * FROM `transaction` WHERE `id_group`='{$id}'";
-    
+function all_transaction($id){
+    $sql = "SELECT * 
+            FROM `transaction` 
+            INNER JOIN `categories` 
+            ON transaction.id_category = categories.id
+            WHERE transaction.id_group = '{$id}'";
+                
     $rs = mysql_query($sql);
     $data = array();
     while ($row = mysql_fetch_assoc($rs)) {
         $data[] = $row;
     }
     return $data;
+
+
 }

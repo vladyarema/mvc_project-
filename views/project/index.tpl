@@ -35,7 +35,7 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="tab-1"> 
                     <form action="/" class="text-center" method="post">
-                        <input type="text" name="prise" placeholder="Цена">
+                        <input type="text" name="prise" placeholder="Сумма">
                         <select name="group">
                             <option value='0' selected="selected">Выберите группу</option>
                             {foreach $outgo as $value}
@@ -47,25 +47,36 @@
                         <button name="button" class="btn btn-info">Добавить</button>
                         <input type="hidden" name="id_group" value="1" />
                     </form>
-                    <div class="col-sm-1">
-                        <p>№</p>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Cума</td>
+                                    <td>Группа</td>
+                                    <td>Описание</td>
+                                    <td>Дата</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {foreach $transaction_outgo as $transaction}
+                                    <tr>
+                                        <td>{$transaction['id']}</td>
+                                        <td>{$transaction['cost']}</td>
+                                        <td>{$transaction['name']}</td>
+                                        <td>{$transaction['tag']}</td>
+                                        <td>{$transaction['data']}</td>
+                                    </tr>
+                                {/foreach}
+                            </tbody>
+                        </table>
+                        
                     </div>
-                    <div class="col-sm-2">
-                        <p>Сумма</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Группа</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Дата</p>
-                    </div>
-                    <div class="col-sm-3">
-                        <p>Подгруппа</p>
-                    </div>
+                    
                 </div>
                 <div class="tab-pane fade" id="tab-2">
                     <form action="/" class="text-center" method="post">
-                        <input type="text" name="prise" placeholder="Цена">
+                        <input type="text" name="prise" placeholder="Сумма">
                         <select name="group">
                             <option value='0' selected="selected">Выберите группу</option>
                             {foreach $income as $value}
@@ -78,6 +89,32 @@
                         <button name="button" class="btn btn-info">Добавить</button>
                         <input type="hidden" name="id_group" value="2">
                     </form>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Cума</td>
+                                    <td>Группа</td>
+                                    <td>Описание</td>
+                                    <td>Дата</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {foreach $transaction_income as $transaction}
+                                    <tr>
+                                        <td>{$transaction['id']}</td>
+                                        <td>{$transaction['cost']}</td>
+                                        <td>{$transaction['name']}</td>
+                                        <td>{$transaction['tag']}</td>
+                                        <td>{$transaction['data']}</td>
+                                    </tr>
+                                {/foreach}
+                            </tbody>
+                        </table>
+                        
+                    </div>
                 </div>
                 <!-- содержание всплывающего окна --> 
                 <div class="modal fade" id="modal-1">

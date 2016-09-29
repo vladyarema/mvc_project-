@@ -18,24 +18,21 @@ $smarty->assign('templateWebPath', TemplateWebPath);
  * */
 
 function indexAction($smarty) {
-    $a = 0;
-    // вывод групп
-    $message['status'] = 0;
-    $result['status'] = 0;
-    $res['status'] = 0;
-    $rs['status'] = 0;
+    $a = 0; // что это?
+    
+    $message['status'] = 0; //ошибка на проверку данных групп
+    $result['status'] = 0; // результат добавления групп, true|false
+    $res['status'] = 0; // проверка данных транзакций
+    $rs['status'] = 0;  // результат добавления групп, true|false
     
     // вывод групп
-    $id_outgo = 1;
-    $outgo = all_group($id_outgo);
-    
-    $id_income = 2;
-    $income = all_group($id_income);
+    $outgo = all_group(1); // запрос на группы для рассхода
+    $income = all_group(2); // запрос на группы для дохода
     // конец вывода
     
-    // вывод транзакций
-    $transaction_outgo = data_transaction(1);
-    $transaction_income = data_transaction(2);
+    $transaction_outgo = all_transaction(1); // транзакции для расхода
+    $transaction_income = all_transaction(2); // транзакции для дохода
+
     if (isset($_POST['submit'])) {
         $data_group = $_POST;
         
@@ -52,9 +49,9 @@ function indexAction($smarty) {
             }
         }
     }
+
     if(isset($_POST['button'])){
         $data_transaction = $_POST;
-        
         $res = check_data_transaction($data_transaction['prise'], $data_transaction['group'], $data_transaction['keywords']);
         
         
