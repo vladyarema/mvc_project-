@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2016-09-29 17:23:03
+<?php /* Smarty version Smarty-3.1.6, created on 2016-10-05 21:32:36
          compiled from "../views/project\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:940157a89f9fe33845-02314132%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'aa3af4deb3e7cf83708fa1aa293a5fb925adae21' => 
     array (
       0 => '../views/project\\index.tpl',
-      1 => 1475162577,
+      1 => 1475695907,
       2 => 'file',
     ),
   ),
@@ -21,8 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'message' => 0,
     'result' => 0,
-    'res' => 0,
-    'rs' => 0,
+    'data_transaction' => 0,
     'outgo' => 0,
     'value' => 0,
     'transaction_outgo' => 0,
@@ -32,12 +31,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a89f9fe810e')) {function content_57a89f9fe810e($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_57a89f9fe810e')) {function content_57a89f9fe810e($_smarty_tpl) {?><?php if (!is_callable('smarty_function_counter')) include 'D:\\XAMPP\\htdocs\\test.loc\\library\\Smarty\\libs\\plugins\\function.counter.php';
+?>
 <div class="container">
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <header>Шапка сайта</header>
+            <header>
+                <button type="button" class="pull-right btn btn-success" data-toggle="modal" data-target="#modal-1">добавить группу</button>
+                <p>Шапка сайта</p>
+            </header>
         </div>
         <div class="col-sm-1"></div>
     </div>
@@ -46,21 +49,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <?php if ($_smarty_tpl->tpl_vars['message']->value['status']==1){?>
-                <div class="error"><?php echo $_smarty_tpl->tpl_vars['message']->value['message'];?>
-</div>
+            <?php if ($_smarty_tpl->tpl_vars['message']->value['group']['status']==1){?>
+                <div class="error">
+                    <?php echo $_smarty_tpl->tpl_vars['message']->value['group']['message'];?>
+
+                </div>
             <?php }?>
-            <?php if ($_smarty_tpl->tpl_vars['result']->value['status']==1){?>
-                <div class="error"><?php echo $_smarty_tpl->tpl_vars['result']->value['message'];?>
-</div>
-            <?php }?>
-            <?php if ($_smarty_tpl->tpl_vars['res']->value['status']==1){?>
-                <div class="error"><?php echo $_smarty_tpl->tpl_vars['res']->value['message'];?>
-</div>
-            <?php }?>
-            <?php if ($_smarty_tpl->tpl_vars['rs']->value['status']==1){?>
-                <div class="error"><?php echo $_smarty_tpl->tpl_vars['rs']->value['message'];?>
-</div>
+            <?php if ($_smarty_tpl->tpl_vars['result']->value['transaction']['status']==1){?>
+                <div class="error">
+                    <?php echo $_smarty_tpl->tpl_vars['result']->value['transaction']['message'];?>
+
+                </div>
             <?php }?>
             <div class="tabs">
                 <ul class="nav nav-tabs">
@@ -73,7 +72,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="tab-1"> 
                     <form action="/" class="text-center" method="post">
-                        <input type="text" name="prise" placeholder="Сумма">
+                        <input type="text" name="prise" placeholder="Сумма"><?php echo $_smarty_tpl->tpl_vars['data_transaction']->value['prise'];?>
+
+                        </input>
                         <select name="group">
                             <option value='0' selected="selected">Выберите группу</option>
                             <?php  $_smarty_tpl->tpl_vars['value'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['value']->_loop = false;
@@ -87,7 +88,6 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 </option>
                             <?php } ?>
                         </select>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-1">добавить группу</button>
                         <input type="text" name="keywords" placeholder="Ключевые слова">
                         <button name="button" class="btn btn-info">Добавить</button>
                         <input type="hidden" name="id_group" value="1" />
@@ -110,16 +110,26 @@ foreach ($_from as $_smarty_tpl->tpl_vars['transaction']->key => $_smarty_tpl->t
 $_smarty_tpl->tpl_vars['transaction']->_loop = true;
 ?>
                                     <tr>
-                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['id'];?>
-</td>
-                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['cost'];?>
-</td>
-                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['name'];?>
-</td>
-                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['tag'];?>
-</td>
-                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['data'];?>
-</td>
+                                        <td>
+                                            <?php echo smarty_function_counter(array(),$_smarty_tpl);?>
+
+                                        </td>
+                                        <td>
+                                            <?php echo $_smarty_tpl->tpl_vars['transaction']->value['cost'];?>
+
+                                        </td>
+                                        <td>
+                                            <?php echo $_smarty_tpl->tpl_vars['transaction']->value['name'];?>
+
+                                        </td>
+                                        <td>
+                                            <?php echo $_smarty_tpl->tpl_vars['transaction']->value['tag'];?>
+<
+                                        /td>
+                                        <td>
+                                            <?php echo $_smarty_tpl->tpl_vars['transaction']->value['date'];?>
+
+                                        </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -177,7 +187,7 @@ $_smarty_tpl->tpl_vars['transaction']->_loop = true;
 </td>
                                         <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['tag'];?>
 </td>
-                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['data'];?>
+                                        <td><?php echo $_smarty_tpl->tpl_vars['transaction']->value['date'];?>
 </td>
                                     </tr>
                                 <?php } ?>
@@ -199,7 +209,6 @@ $_smarty_tpl->tpl_vars['transaction']->_loop = true;
                             <div class="modal-body">
                                 <form action="/" method="post" class="display_block">
                                     <input type="text" name="name" placeholder="Имя группы">
-                                    <input type="text" name="description" placeholder="Описание группы">
                                     <select name="group">
                                         <option selected="selected" value="0">Выберите группу</option>
                                         <option name="0" value="1">Доход</option>

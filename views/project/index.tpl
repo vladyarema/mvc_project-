@@ -3,7 +3,10 @@
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <header>Шапка сайта</header>
+            <header>
+                <button type="button" class="pull-right btn btn-success" data-toggle="modal" data-target="#modal-1">добавить группу</button>
+                <p>Шапка сайта</p>
+            </header>
         </div>
         <div class="col-sm-1"></div>
     </div>
@@ -12,17 +15,15 @@
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            {if $message['status'] == 1}
-                <div class="error">{$message['message']}</div>
+            {if $message['group']['status'] == 1}
+                <div class="error">
+                    {$message['group']['message']}
+                </div>
             {/if}
-            {if $result['status'] == 1}
-                <div class="error">{$result['message']}</div>
-            {/if}
-            {if $res['status'] == 1}
-                <div class="error">{$res['message']}</div>
-            {/if}
-            {if $rs['status'] == 1}
-                <div class="error">{$rs['message']}</div>
+            {if $result['transaction']['status'] == 1}
+                <div class="error">
+                    {$result['transaction']['message']}
+                </div>
             {/if}
             <div class="tabs">
                 <ul class="nav nav-tabs">
@@ -35,14 +36,14 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="tab-1"> 
                     <form action="/" class="text-center" method="post">
-                        <input type="text" name="prise" placeholder="Сумма">
+                        <input type="text" name="prise" placeholder="Сумма">{$data_transaction['prise']}
+                        </input>
                         <select name="group">
                             <option value='0' selected="selected">Выберите группу</option>
                             {foreach $outgo as $value}
                                 <option name='{$value['id']}' value='{$value['id']}'>{$value['name']}</option>
                             {/foreach}
                         </select>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-1">добавить группу</button>
                         <input type="text" name="keywords" placeholder="Ключевые слова">
                         <button name="button" class="btn btn-info">Добавить</button>
                         <input type="hidden" name="id_group" value="1" />
@@ -61,11 +62,21 @@
                             <tbody>
                                 {foreach $transaction_outgo as $transaction}
                                     <tr>
-                                        <td>{$transaction['id']}</td>
-                                        <td>{$transaction['cost']}</td>
-                                        <td>{$transaction['name']}</td>
-                                        <td>{$transaction['tag']}</td>
-                                        <td>{$transaction['data']}</td>
+                                        <td>
+                                            {counter}
+                                        </td>
+                                        <td>
+                                            {$transaction['cost']}
+                                        </td>
+                                        <td>
+                                            {$transaction['name']}
+                                        </td>
+                                        <td>
+                                            {$transaction['tag']}<
+                                        /td>
+                                        <td>
+                                            {$transaction['date']}
+                                        </td>
                                     </tr>
                                 {/foreach}
                             </tbody>
@@ -108,7 +119,7 @@
                                         <td>{$transaction['cost']}</td>
                                         <td>{$transaction['name']}</td>
                                         <td>{$transaction['tag']}</td>
-                                        <td>{$transaction['data']}</td>
+                                        <td>{$transaction['date']}</td>
                                     </tr>
                                 {/foreach}
                             </tbody>
@@ -129,7 +140,6 @@
                             <div class="modal-body">
                                 <form action="/" method="post" class="display_block">
                                     <input type="text" name="name" placeholder="Имя группы">
-                                    <input type="text" name="description" placeholder="Описание группы">
                                     <select name="group">
                                         <option selected="selected" value="0">Выберите группу</option>
                                         <option name="0" value="1">Доход</option>
