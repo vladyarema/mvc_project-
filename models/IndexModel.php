@@ -54,6 +54,8 @@ function check_data_transaction($prise, $group, $keywords) {
         $message['status'] = 1;
         $message['message'] = 'В цене содержаться недопустимые символы';
         return $message;
+    }else{
+        SetCookie('prise',$data_transaction['prise'],time()+3600);
     }
     if($group == 0){
         $message['status'] = 1;
@@ -69,6 +71,8 @@ function check_data_transaction($prise, $group, $keywords) {
         $message['status'] = 1;
         $message['message'] = 'В ключевых словах содержаться недопустимые символы';
         return $message;
+    }else{
+        SetCookie('keywords',$data_transaction['keywords'],time()+3600);
     }
     $message['status'] = 0;
     return $message;

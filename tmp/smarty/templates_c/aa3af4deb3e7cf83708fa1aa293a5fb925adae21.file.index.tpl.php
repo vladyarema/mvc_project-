@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2016-10-05 21:32:36
+<?php /* Smarty version Smarty-3.1.6, created on 2016-10-18 20:03:18
          compiled from "../views/project\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:940157a89f9fe33845-02314132%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'aa3af4deb3e7cf83708fa1aa293a5fb925adae21' => 
     array (
       0 => '../views/project\\index.tpl',
-      1 => 1475695907,
+      1 => 1476813795,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'message' => 0,
     'result' => 0,
-    'data_transaction' => 0,
     'outgo' => 0,
     'value' => 0,
     'transaction_outgo' => 0,
@@ -72,9 +71,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="tab-1"> 
                     <form action="/" class="text-center" method="post">
-                        <input type="text" name="prise" placeholder="Сумма"><?php echo $_smarty_tpl->tpl_vars['data_transaction']->value['prise'];?>
-
-                        </input>
+                        <input type="text" name="prise" placeholder="Сумма" value="<?php echo $_COOKIE['prise'];?>
+"/>
                         <select name="group">
                             <option value='0' selected="selected">Выберите группу</option>
                             <?php  $_smarty_tpl->tpl_vars['value'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['value']->_loop = false;
@@ -88,7 +86,8 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 </option>
                             <?php } ?>
                         </select>
-                        <input type="text" name="keywords" placeholder="Ключевые слова">
+                        <input type="text" name="keywords" placeholder="Ключевые слова" value="<?php echo $_COOKIE['keywords'];?>
+" />
                         <button name="button" class="btn btn-info">Добавить</button>
                         <input type="hidden" name="id_group" value="1" />
                     </form>
@@ -124,8 +123,8 @@ $_smarty_tpl->tpl_vars['transaction']->_loop = true;
                                         </td>
                                         <td>
                                             <?php echo $_smarty_tpl->tpl_vars['transaction']->value['tag'];?>
-<
-                                        /td>
+
+                                        </td>
                                         <td>
                                             <?php echo $_smarty_tpl->tpl_vars['transaction']->value['date'];?>
 

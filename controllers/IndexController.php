@@ -45,9 +45,9 @@ function indexAction($smarty) {
 
     if(isset($_POST['button'])){
         $data_transaction = $_POST;
+        $_COOKIE['Test'] = $data_transaction;
         $result['transaction'] = check_data_transaction($data_transaction['prise'], $data_transaction['group'], $data_transaction['keywords']);
-        
-        
+
         if($message['transaction']['status'] == 0){
             $data_transaction['keywords'] = htmlspecialchars(mysql_real_escape_string($data_transaction['keywords']));
             
@@ -61,6 +61,7 @@ function indexAction($smarty) {
     $smarty->assign('pageTitle', '');
     $smarty->assign('outgo', $outgo);
     $smarty->assign('income', $income);
+    $smarty->assign('_COOKIE', $_COOKIE);
     $smarty->assign('message', $message);
     $smarty->assign('result', $result);
     $smarty->assign('transaction_outgo', $transaction_outgo);

@@ -36,15 +36,14 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="tab-1"> 
                     <form action="/" class="text-center" method="post">
-                        <input type="text" name="prise" placeholder="Сумма">{$data_transaction['prise']}
-                        </input>
+                        <input type="text" name="prise" placeholder="Сумма" value="{$smarty.cookies.prise}"/>
                         <select name="group">
                             <option value='0' selected="selected">Выберите группу</option>
                             {foreach $outgo as $value}
                                 <option name='{$value['id']}' value='{$value['id']}'>{$value['name']}</option>
                             {/foreach}
                         </select>
-                        <input type="text" name="keywords" placeholder="Ключевые слова">
+                        <input type="text" name="keywords" placeholder="Ключевые слова" value="{$smarty.cookies.keywords}" />
                         <button name="button" class="btn btn-info">Добавить</button>
                         <input type="hidden" name="id_group" value="1" />
                     </form>
@@ -72,8 +71,8 @@
                                             {$transaction['name']}
                                         </td>
                                         <td>
-                                            {$transaction['tag']}<
-                                        /td>
+                                            {$transaction['tag']}
+                                        </td>
                                         <td>
                                             {$transaction['date']}
                                         </td>

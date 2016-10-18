@@ -1,4 +1,5 @@
-<?php session_start(); // стартуем сессию
+<?php
+session_start(); // стартуем сессию
 
 setlocale(LC_ALL, "ru_RU.CP1251");	
 #echo phpinfo();
